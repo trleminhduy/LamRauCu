@@ -42,4 +42,36 @@ $(document).ready(function () {
             e.preventDefault();
         }
     });
+
+
+    //Validate login form
+   
+
+    $("#login-form").submit(function (e) {
+        toastr.clear();
+        let email = $('input[name="email"]').val();
+        let password = $('input[name="password"]').val();
+     
+
+        let errorMessage = "";
+
+   
+        let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(email)) {
+            errorMessage += "Email không hợp lệ, vui lòng thử lại . <br>";
+        }
+
+        if (password.length < 6) {
+            errorMessage += "Mật khẩu phải có ít nhất 6 ký tự .<br>";
+        }
+
+
+  
+
+        if (errorMessage != "") {
+            toastr.error(errorMessage,"Lỗi")
+            e.preventDefault();
+        }
+    });
+
 });

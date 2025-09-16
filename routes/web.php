@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('clients.pages.home');
-});
+})->name('home');
 
 Route::get('/about', function () {
     return view('clients.pages.about');
@@ -29,7 +29,9 @@ Route::post('/register', [AuthController::class,'register'])->name('post-registe
 //Routue kích hoạt tài khoản
 Route::get('/activate/{token}', [AuthController::class,'activate'])->name('activate');
 
+Route::get('/login', [AuthController::class,'showloginForm'])->name('login');
+Route::post('/login', [AuthController::class,'login'])->name('post-login');
 
 
-
+Route::get('/logout', [AuthController::class,'logout'])->name('logout');
 
