@@ -46,7 +46,7 @@ class AuthController extends Controller
         if ($existingUser) {
 
             if ($existingUser->isPending()) {
-                toastr()->error('Emailđã được đăng ký và đang chờ kích hoạt');
+                toastr()->error('Email đã được đăng ký và đang chờ kích hoạt');
                 return redirect()->route('register');
             }
             return redirect()->route('register');

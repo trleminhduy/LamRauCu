@@ -44,14 +44,13 @@ $(document).ready(function () {
     });
 
 
-    //Validate login form
-   
-
-    $("#login-form").submit(function (e) {
+    //Validate reset form
+ 
+    $("#reset-password-form").submit(function (e) {
         toastr.clear();
         let email = $('input[name="email"]').val();
         let password = $('input[name="password"]').val();
-     
+        let confirmPassword = $('input[name="password_confirmation"]').val();
 
         let errorMessage = "";
 
@@ -64,7 +63,9 @@ $(document).ready(function () {
         if (password.length < 6) {
             errorMessage += "Mật khẩu phải có ít nhất 6 ký tự .<br>";
         }
-
+          if (password != confirmPassword) {
+            errorMessage += "Mật khẩu nhập lại không khớp .<br>";
+        }
 
   
 
@@ -73,5 +74,8 @@ $(document).ready(function () {
             e.preventDefault();
         }
     });
+
+
+
 
 });
