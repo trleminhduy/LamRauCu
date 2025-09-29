@@ -20,6 +20,9 @@
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{asset ('assets/clients/css/responsive.css')}}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+    {{-- Custom css --}}
+    <link rel="stylesheet" href="{{asset('assets/clients/css/custom.css')}}">
 </head>
 
 <body>
