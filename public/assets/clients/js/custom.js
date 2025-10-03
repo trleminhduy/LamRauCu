@@ -75,7 +75,81 @@ $(document).ready(function () {
         }
     });
 
+    // ************ PAGE ACCOUNT *******************
+    // **************             ************************
+
+    //When clicking vao hinh anh => mo input
+    $('.profile-pic').click(function(){
+        $("#avatar").click();
+    });
+
+       //When select vao hinh anh => preview hinh
+        $("#avatar").change(function(){
+            let input = this;
+            if(input.files && input.files[0]){
+                let reader = new FileReader();
+                reader.onload=function(e){
+                    $("#preview-image").attr('src',e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        });
 
 
+    $("#update_account").on("submit",function (e) {
+        e.preventDefault();
+
+        let formData = new FormData(this);
+        let urlUpdate = $(this).attr('action');
+
+
+        $.ajaxSetup({
+            headers:{
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+
+        $.ajax({
+            url: urlUpdate,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            beforeSend: function(){
+                $(".btn-wrapper button").text("Đang cập nhật...").attr("disabled", true);
+            },
+
+            success: function(response){
+                if(response.success){
+                    toastr.success(response.messsage)
+                    //update new image
+                    if(response.avatar){
+                         $("#preview-image").attr('src',response.avatar);
+                    }
+                }else{
+                    toastr.error(response.messsage)
+                }
+
+            },
+
+            error: function(xhr){
+                let errors = xhr.responseJSON.errors;
+                $.each(errors,function(key, value){
+                    toastr.error(value[0]);
+                });
+            },
+
+            complete: function(){
+                $(".btn-wrapper button")
+                    .text("Cập nhật ")
+                    .attr("disabled",false);
+            },
+
+
+
+        })
+
+
+    })
 
 });

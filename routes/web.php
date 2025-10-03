@@ -58,6 +58,8 @@ Route::middleware(['auth.custom'])->group(function(){
     //update account,.....
     Route::prefix('account')->group(function(){
         Route::get('/',[AccountController::class,'index'])->name('account');
+        Route::post('/account/update', [AccountController::class, 'update'])->name('account.update');
+
     });
     
 });
