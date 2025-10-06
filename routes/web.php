@@ -26,40 +26,40 @@ Route::get('/faq', function () {
     return view('clients.pages.faq');
 });
 
-Route::get('/register', [AuthController::class,'showRegisterForm'])->name('register');
-Route::post('/register', [AuthController::class,'register'])->name('post-register');
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register'])->name('post-register');
 
 //Routue kích hoạt tài khoản
-Route::get('/activate/{token}', [AuthController::class,'activate'])->name('activate');
+Route::get('/activate/{token}', [AuthController::class, 'activate'])->name('activate');
 
-Route::get('/login', [AuthController::class,'showloginForm'])->name('login');
-Route::post('/login', [AuthController::class,'login'])->name('post-login');
+Route::get('/login', [AuthController::class, 'showloginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('post-login');
 
 
 
 
 //Forgot password
-Route::get('/forgot-password', [ForgotPasswordController::class,'showForgotPasswordForm'])->name('password.request');
-Route::post('/forgot-password', [ForgotPasswordController::class,'sendResetLink'])->name('password.email');
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])->name('password.request');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink'])->name('password.email');
 
 
 //Reset it
 //reset phải có token mới biết được user nào cần reset
-Route::get('/reset-password/{token}', [ResetPasswordController::class,'showResetForm'])->name('password.reset');
-Route::post('/reset-password', [ResetPasswordController::class,'resetPassword'])->name('password.update');
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->name('password.update');
 
 
 //Custom middleware
-Route::middleware(['auth.custom'])->group(function(){
+Route::middleware(['auth.custom'])->group(function () {
     //middleware check người dùng nếu chưa đăng nhập thì sẽ không đi luồng đăng xuất thành công 
     //vì nó không hợp lý thay vào đó sẽ bắt người dùng đăng nhập mới thực hiện chức năng
-    Route::get('/logout', [AuthController::class,'logout'])->name('logout'); 
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     //update account,.....
-    Route::prefix('account')->group(function(){
-        Route::get('/',[AccountController::class,'index'])->name('account');
+    Route::prefix('account')->group(function () {
+        Route::get('/', [AccountController::class, 'index'])->name('account');
         Route::post('/account/update', [AccountController::class, 'update'])->name('account.update');
 
+        Route::post('/change-password', [AccountController::class, 'changePassword'])->name('account.password-change');
     });
-    
 });

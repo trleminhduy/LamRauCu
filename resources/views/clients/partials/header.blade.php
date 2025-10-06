@@ -71,7 +71,7 @@
                                             <li class="menu-icon"><a href="shop.html">Cửa hàng</a>
                                             </li>
                                             <li><a href="contact.html">Liên hệ</a></li>
-                                            <li class="special-link"><a href="contact.html">GET A QUOTE</a></li>
+                                            <li class="special-link"><a href="contact.html">LIÊN HỆ</a></li>
                                         </ul>
                                     </div>
                                 </nav>

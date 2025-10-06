@@ -38,10 +38,8 @@
                                                     <p>Hello <strong>{{$user->email}}</strong> (không phải <strong>{{$user->email}}</strong>?
                                                         <small style="color: red" ><a href="{{route('logout')}}">Đăng xuất</a></small> )
                                                     </p>
-                                                    <p>From your account dashboard you can view your <span>recent
-                                                            orders</span>, manage your <span>shipping and billing
-                                                            addresses</span>, and <span>edit your password and account
-                                                            details</span>.</p>
+                                                    <p>Xem các đơn hàng gần đây của bạn ở đây <span>và
+                                                        </span> quản lý địa chỉ giao hàng 
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="liton_tab_orders">
@@ -155,16 +153,14 @@
                                              <div class="tab-pane fade" id="liton_tab_password">
                                                 <
                                                     <div class="ltn__form-box">
-                                                        <form action="#" method="POST" id="change-password-form">                                                    
+                                                        <form action="{{route ('account.password-change')}}" method="POST" id="change-password-form">                                                    
                                                             <fieldset>
                                                                
                                                                 <div class="row">
                                                                     <div class="col-md-12">
-                                                                        <label>Mật khẩu hiện tại: (leave blank to leave
-                                                                            unchanged):</label>
+                                                                        <label>Mật khẩu hiện tại: <span style="color:red"> (Để trống nếu không muốn đổi mật khẩu!) <span></label>
                                                                         <input type="password" name="current_password" required>
-                                                                        <label>Mật khẩu mới: (leave blank to leave
-                                                                            unchanged):</label>
+                                                                        <label>Mật khẩu mới: <span style="color:red"> (Để trống nếu không muốn đổi mật khẩu!)</label>
                                                                         <input type="password" name="new_password" required>
                                                                         <label>Nhập lại mật khẩu mới:</label>
                                                                         <input type="password" name="confirm_new_password" autocomplete="new-password" required>

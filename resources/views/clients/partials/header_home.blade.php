@@ -8,7 +8,7 @@
                             <div class="ltn__top-bar-menu">
                                 <ul>
                                     <li><a href="locations.html"><i class="icon-placeholder"></i> Pham The Hien, Chanh Hung</a></li>
-                                    <li><a href="mailto:minhdien.dev@gmail.com?Subject=Contact%20with%20to%20you"><i
+                                    <li><a href="mailto:trleminhduy@gmail.com?Subject=Contact%20with%20to%20you"><i
                                                 class="icon-mail"></i> trleminhduy@gmail.com</a></li>
                                 </ul>
                             </div>
@@ -71,7 +71,7 @@
                                             <li class="menu-icon"><a href="shop.html">Cửa hàng</a>
                                             </li>
                                             <li><a href="contact.html">Liên hệ</a></li>
-                                            <li class="special-link"><a href="contact.html">GET A QUOTE</a></li>
+                                            <li class="special-link"><a href="contact.html">LIÊN HỆ</a></li>
                                         </ul>
                                     </div>
                                 </nav>
