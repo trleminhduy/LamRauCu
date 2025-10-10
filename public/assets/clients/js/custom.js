@@ -215,4 +215,39 @@ $(document).ready(function () {
             },
         });
     });
+
+    //Validate form địa chỉ
+    $("#addAddressForm").submit(function (e) {
+        e.preventDefault();
+
+        let isValid = true;
+        //Xoá thông báo lỗi cũ
+        $(".error-message").remove();
+
+        let fullName = $("#full_name").val().trim();
+        let phone = $("#phone").val().trim();
+        let address = $("#address").val().trim();
+        let city = $("#city").val().trim();
+
+        if (fullName.length < 2) {
+            isValid = false;
+            $("#full_name").after(
+                //ở đây nếu người dùng nhập không đủ 2 ký tự thì sẽ xuất lỗi
+                '<p class="error-message text-danger"> Họ và tên ít nhất 2 ký tự </p> '
+            );
+        }
+
+        let phoneRegex = /^[0-9]{10}$/;
+        if (!phoneRegex.test(phone)) {
+            isValid = false;
+            $("#phone").after(
+                //ở đây nếu người dùng nhập không đủ 10 số thì sẽ xuất lỗi
+                '<p class="error-message text-danger"> Số diện thoại phải 10 chữ số </p> '
+            );
+        }
+
+        if (isValid) {
+            this.submit();
+        }
+    });
 });
